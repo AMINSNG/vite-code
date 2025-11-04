@@ -1,0 +1,77 @@
+.font-size-adjuster {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f9fafb, #f1f5f9);
+  color: #0f172a;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 25px 60px -45px rgba(30, 64, 175, 0.5);
+}
+
+.font-size-adjuster__header h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+}
+
+.font-size-adjuster__header p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.font-size-adjuster__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.font-size-adjuster__buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.font-size-adjuster__buttons button {
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #1e40af;
+  color: #f8fafc;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.font-size-adjuster__buttons button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.font-size-adjuster__buttons button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 25px -15px rgba(30, 64, 175, 0.7);
+}
+
+.font-size-adjuster__reset {
+  background-color: rgba(15, 23, 42, 0.08);
+  color: #1e293b;
+}
+
+.font-size-adjuster__current {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.font-size-adjuster__preview {
+  margin: 0;
+  line-height: 1.6;
+  padding: 1.25rem;
+  border-radius: 14px;
+  background-color: rgba(30, 41, 59, 0.08);
+  color: #0f172a;
+}
