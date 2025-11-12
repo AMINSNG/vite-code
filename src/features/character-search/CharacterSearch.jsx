@@ -3,11 +3,24 @@ import { useMemo, useState } from "react";
 import sampleCharacterImage from "../../assets/IMG_9074.PNG";
 import "./CharacterSearch.css";
 import { getCharacter } from "../../api";
+import { Dropdown, Space } from "antd";
+
+const items = [
+  {
+    label: <span>MALE</span>,
+    key: "Male",
+  },
+  {
+    label: <span>FEMALE</span>,
+    key: "Female",
+  },
+];
 
 const CharacterSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeQuery, setActiveQuery] = useState("");
   const [Characters, SetCharecters] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("MALE");
 
   const headline = useMemo(() => {
     if (!activeQuery) return "Rick Sanchez";
@@ -17,6 +30,8 @@ const CharacterSearch = () => {
   const handleSearch = () => {
     setActiveQuery(searchTerm.trim());
   };
+
+  console.log(selectedFilter);
 
   const handleClear = () => {
     setSearchTerm("");
@@ -38,6 +53,18 @@ const CharacterSearch = () => {
           value={searchTerm}
         />
         <div className="character-search__actions">
+          <Dropdown
+            menu={{
+              items,
+              onClick: (e) => {
+                setSelectedFilter(e.key);
+              },
+            }}
+          >
+            <a onClick={(e) => e.preventDefault()}>
+              <Space>Hover me</Space>
+            </a>
+          </Dropdown>
           <Button
             type="primary"
             onClick={handleSearch}
@@ -51,7 +78,11 @@ const CharacterSearch = () => {
         </div>
       </div>
 
-      {Characters.map((user) => (
+      {Characters.filter(
+        (user) =>
+          user.gender.toLowerCase() === selectedFilter.toLowerCase() &&
+          user.name.includes(activeQuery)
+      ).map((user) => (
         <article className="character-search__card" aria-live="polite">
           <img
             alt="Illustration of Rick Sanchez from Rick and Morty"
