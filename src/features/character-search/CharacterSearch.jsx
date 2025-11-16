@@ -1,9 +1,11 @@
 import { Button, Input } from "antd";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import sampleCharacterImage from "../../assets/IMG_9074.PNG";
 import "./CharacterSearch.css";
 import { getCharacter } from "../../api";
 import { Dropdown, Space } from "antd";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const items = [
   {
@@ -21,6 +23,13 @@ const CharacterSearch = () => {
   const [activeQuery, setActiveQuery] = useState("");
   const [Characters, SetCharecters] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("MALE");
+  const [isLoading, setisLoading] = useState(true);
+
+  useEffect(() => {
+    fethapi_handler().finally(() => {
+      setisLoading(false);
+    });
+  }, []);
 
   const headline = useMemo(() => {
     if (!activeQuery) return "Rick Sanchez";
@@ -31,8 +40,6 @@ const CharacterSearch = () => {
     setActiveQuery(searchTerm.trim());
   };
 
-  console.log(selectedFilter);
-
   const handleClear = () => {
     setSearchTerm("");
     setActiveQuery("");
@@ -42,6 +49,10 @@ const CharacterSearch = () => {
     const { data } = await getCharacter();
     SetCharecters(data.results);
   };
+
+  if (isLoading) {
+    return <Spin indicator={<LoadingOutlined spin />} size="large" />;
+  }
 
   return (
     <div className="character-search">
@@ -104,9 +115,6 @@ const CharacterSearch = () => {
           </div>
         </article>
       ))}
-      <Button type="primary" onClick={fethapi_handler}>
-        fetch
-      </Button>
     </div>
   );
 };
