@@ -3,14 +3,11 @@ import { createRoot } from "react-dom/client";
 import "./styles/global.css";
 import App from "./app/App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import roots from "./route.jsx"
 
-const roots = createBrowserRouter([{path:'home',element:<App/>}]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={roots}>
-
-
-    </RouterProvider>
+    <RouterProvider router={roots}></RouterProvider>
   </StrictMode>
 );
