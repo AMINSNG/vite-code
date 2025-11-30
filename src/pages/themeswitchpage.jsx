@@ -8,10 +8,9 @@ function Themeswitchpage() {
       <div>this is theme</div>
       <Link to={"/"}>dddd</Link>
       <div>
-        <ThemeSwitch></ThemeSwitch>
+        <ThemeSwitch />
       </div>
     </div>
-
   );
 }
 

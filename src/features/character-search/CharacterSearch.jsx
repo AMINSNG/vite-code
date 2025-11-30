@@ -6,6 +6,7 @@ import { getCharacter } from "../../api";
 import { Dropdown, Space } from "antd";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import { Link } from "react-router";
 
 const items = [
   {
@@ -101,7 +102,10 @@ const CharacterSearch = () => {
             src={user.image}
           />
           <div className="character-search__details">
-            <h3 className="character-search__name">{user.name}</h3>
+            <Link to={`/theme-switch/${user.id}`}>
+              <h3 className="character-search__name">{user.name}</h3>
+            </Link>
+
             <ul className="character-search__meta" role="list">
               <li>{user.status}</li>
               <li>{user.species}</li>
