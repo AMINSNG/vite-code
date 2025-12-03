@@ -102,7 +102,7 @@ const CharacterSearch = () => {
             src={user.image}
           />
           <div className="character-search__details">
-            <Link to={`/theme-switch/${user.id}`}>
+            <Link to={`/charecter-search/${user.id}`}>
               <h3 className="character-search__name">{user.name}</h3>
             </Link>
 

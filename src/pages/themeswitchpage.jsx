@@ -6,7 +6,7 @@ function Themeswitchpage() {
   return (
     <div>
       <div>this is theme</div>
-      <Link to={"/"}>dddd</Link>
+      <Link to={"/"}>back to home</Link>
       <div>
         <ThemeSwitch />
       </div>

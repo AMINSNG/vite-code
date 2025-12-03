@@ -3,6 +3,14 @@
   max-width: 1200px;
   padding: 3rem 1.5rem 4rem;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: #475569;
+}
 
 .app__header {
   display: flex;

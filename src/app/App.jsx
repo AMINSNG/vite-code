@@ -1,9 +1,15 @@
-import CharacterSearch from '../features/character-search/CharacterSearch.jsx';
-import FontSizeAdjuster from '../components/font-size/FontSizeAdjuster.jsx';
-import ThemeSwitch from '../components/theme-switch/ThemeSwitch.jsx';
-import './App.css';
+import CharacterSearch from "../features/character-search/CharacterSearch.jsx";
+import FontSizeAdjuster from "../components/font-size/FontSizeAdjuster.jsx";
+import ThemeSwitch from "../components/theme-switch/ThemeSwitch.jsx";
+import "./App.css";
+import { useNavigate, useParams } from "react-router";
 
 const App = () => {
+  const navigate = useNavigate();
+  function routeuser() {
+    navigate("theme-switch");
+  }
+
   return (
     <div className="app">
       <header className="app__header">
@@ -11,9 +17,11 @@ const App = () => {
           <p className="app__badge">Toolkit Demo</p>
           <h1 className="app__title">Layout Playground</h1>
           <p className="app__subtitle">
-            Small interactive widgets refactored with a clearer project structure.
+            Small interactive widgets refactored with a clearer project
+            structure.
           </p>
         </div>
+        <button onClick={routeuser}>theme switch</button>
         <ThemeSwitch />
       </header>
 
